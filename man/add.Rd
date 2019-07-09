@@ -26,5 +26,5 @@ A work of pure genius.
 \examples{
 add(5, 10)
 ## Can also use negative numbers
-add(-5, 10)
+add(-5, 10) # Should give 5
 }
