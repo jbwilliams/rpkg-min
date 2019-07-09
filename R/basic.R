@@ -16,7 +16,7 @@ add = function(x, y) {
   if (is.na(x) || is.na(y)) {
     message("Bad luck, you've got some NAs. I hope it's not catching.")
   }
-  x + y + 1
+  x + y
 }
 
 #' @export
