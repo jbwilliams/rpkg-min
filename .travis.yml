@@ -1,29 +1,35 @@
 language: r
 cache: packages
 
-# handy options:
-# Test against previous, current, and unstable r versions
-r:
-  - oldrel
-  - release
-  - devel
-# Send notifications. In this case, only if results change
-notifications:
-  email:
-    on_success: change
-    on_failure: change
-    # recipients:
-    #   - someone@gmail.com
-# For initial check, how many commits back do you go?
-# The default is 50.
-git:
-  depth: 3
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+deploy:
+  provider: script
+script: Rscript -e 'pkgdown::deploy_site_github()'
+skip_cleanup: true
 
-branches:
-  except:
-    - legacy
-    - experimental
-  # OR
-  only:
-    - master
-    - stable
+# # handy options:
+# # Test against previous, current, and unstable r versions
+# r:
+#   - oldrel
+#   - release
+#   - devel
+# # Send notifications. In this case, only if results change
+# notifications:
+#   email:
+#     on_success: change
+#     on_failure: change
+#     # recipients:
+#     #   - someone@gmail.com
+# # For initial check, how many commits back do you go?
+# # The default is 50.
+# git:
+#   depth: 3
+
+# branches:
+#   except:
+#     - legacy
+#     - experimental
+#   # OR
+#   only:
+#     - master
+#     - stable
